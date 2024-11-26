@@ -24,6 +24,9 @@
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
+    <link href="css/social.css" rel="stylesheet">
+
+
     <!-- Custom CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
 
@@ -131,15 +134,15 @@
                                 <h4>Eliminar</h4>
                             </div>
                         </div>
-                        <div v-for="(contacto, index) in contactos" :key="index" class="row">
+                        <div v-for="(contacto, index) in contactos" :key="index" class="row" itemscope itemtype="https://schema.org/Person">
                             <div class="col-xs-4">
-                                <p>{{ contacto.nombre }}</p>
+                                <p itemprop="name">{{ contacto.nombre }}</p>
                             </div>
                             <div class="col-xs-4">
-                                <p>{{ contacto.email }}</p>
+                                <p itemprop="email">{{ contacto.email }}</p>
                             </div>
                             <div class="col-xs-3">
-                                <p>{{ contacto.telefono }}</p>
+                                <p itemprop="telephone">{{ contacto.telefono }}</p>
                             </div>
                             <div class="col-xs-1">
                                 <button class="btn btn-danger btn-sm" @click="eliminarContacto(index)">
@@ -154,6 +157,7 @@
                 </div>
             </div>
         </section>
+        
 
         <!-- Añadir nuevo Section -->
         <section id="nuevo">
@@ -166,23 +170,23 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
-                        <form @submit.prevent="agregarContacto">
+                        <form @submit.prevent="agregarContacto" itemscope itemtype="https://schema.org/Person">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Nombre</label>
-                                    <input type="text" class="form-control" placeholder="Nombre" v-model="nuevoContacto.nombre" required>
+                                    <label for="nombre">Nombre</label>
+                                    <input id="nombre" type="text" class="form-control" placeholder="Nombre" v-model="nuevoContacto.nombre" required itemprop="name">
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Email</label>
-                                    <input type="email" class="form-control" placeholder="Email" v-model="nuevoContacto.email" required>
+                                    <label for="email">Email</label>
+                                    <input id="email" type="email" class="form-control" placeholder="Email" v-model="nuevoContacto.email" required itemprop="email">
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                                    <label>Teléfono</label>
-                                    <input type="tel" class="form-control" placeholder="Número de teléfono" pattern="^\d{9}$" v-model="nuevoContacto.telefono"  title="Por favor ingrese un número de teléfono válido de 9 dígitos" required >
+                                    <label for="telefono">Teléfono</label>
+                                    <input id="telefono" type="tel" class="form-control" placeholder="Número de teléfono" pattern="^\d{9}$" v-model="nuevoContacto.telefono"  title="Por favor ingrese un número de teléfono válido de 9 dígitos" required itemprop="telephone">
                                 </div>
                             </div>
                             <br>
@@ -196,6 +200,49 @@
                 </div>
             </div>
         </section>
+
+
+            <!-- Acerca de Section -->
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        
+                        <h2>Acerca de...</h2>
+                        <hr class="star-primary">
+                    </div>
+                </div>
+                <!-- Contenedor de publicaciones -->
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                    <br><p>¡Síguenos en nuestras redes sociales para estar al tanto de todas nuestras actualizaciones y noticias!<br> No te pierdas nada. Aquí encontrarás nuestras publicaciones más recientes.</p>
+                    </div>
+                    <div class="col-lg-12 social-posts">
+                        <!-- Publicación de Twitter -->
+                        <blockquote class="twitter-tweet">
+                            <p lang="en" dir="ltr">
+                                Welcome to our AgendaVue web page!
+                                <a href="https://t.co/5hJaTRIkPc">pic.twitter.com/5hJaTRIkPc</a>
+                            </p>
+                            &mdash; AgendaVue (@VueAgendaWeb) 
+                            <a href="https://twitter.com/VueAgendaWeb/status/1861406888950223259?ref_src=twsrc%5Etfw">
+                                November 26, 2024
+                            </a>
+                        </blockquote>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+                        <!-- Publicación de Facebook -->
+                        <iframe 
+                            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fagendavue%2Fposts%2Fpfbid0WRDjbESqWGHphPyQbnNuRiMbiqJegw8jhBSU2ZNovgj4etNNf1UT3bsUpxrGu21ul&show_text=true" 
+                            class="facebook-post">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
     </div>
 
     <!-- jQuery -->
